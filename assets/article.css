@@ -13,7 +13,7 @@ body {
 }
 
 header {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -46,7 +46,7 @@ header h1:hover {
 
 
 nav {
-  background-color: #333;
+  background-color: #000;
   color: #333;
   padding: 10px;
   display: flex;
@@ -94,7 +94,6 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  background-color: #000;
 }
 
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
