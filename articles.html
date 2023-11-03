@@ -1,58 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <title>Article Layout</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="Cache-control" content="public">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Portfolio website showcasing Kim Hanlon's projects and articles">
+  <meta name="keywords"
+    content="portfolio, projects, scuba instructor, web design, articles, software developer, Kim Hanlon">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Portfolio - Articles</title>
   <link rel="stylesheet" type="text/css" href="assets/article.css">
-  <script src="article.js"></script>
+  <script src="script.js"></script>
 </head>
 
 <body>
   <header>
-    <h1>Article Layout</h1>
+    <h1>Kim Hanlon<br>Portfolio</h1>
   </header>
 
-  <main id="main-content">
-    <div class="article-container">
-      <div class="article-card">
-        <h2 class="article-title">Article 1</h2>
-        <p class="article-content">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec venenatis finibus
-          rhoncus. Sed fringilla lorem et tellus cursus, sit amet vulputate est condimentum. Nulla eget mauris augue.
-          Nulla ipsum lorem, tristique nec purus in, cursus feugiat mi.</p>
-        <button class="read-more" onclick="openArticle('article1.html')">Read More</button>
+  <nav>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="projects.html">Projects</a></li>
+      <li><a href="articles.html">Articles</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+
+  <main class="page-content">
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Things That Go Bump In The Night</h2>
+        <p class="copy">Are you afraid of the dark?</p>
+        <a class="btn" href="article1.html">View Article</a>
       </div>
-      <div class="article-card">
-        <h2 class="article-title">Article 2</h2>
-        <p class="article-content">Duis sagittis est metus, eu tincidunt risus elementum ac. Proin molestie mauris a
-          enim facilisis, vitae sodales enim congue. Nunc fringilla, dolor nec commodo consectetur, massa lectus luctus
-          lacus, eu sagittis dui elit non nisi.</p>
-        <button class="read-more" onclick="openArticle('article2.html')">Read More</button>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Breathe in. Now breathe out</h2>
+        <p class="copy">It's as simple as that...</p>
+        <button class="btn">View Article</button>
       </div>
-      <div class="article-card">
-        <h2 class="article-title">Article 3</h2>
-        <p class="article-content">Vivamus auctor libero vel massa iaculis finibus. Nulla dictum egestas felis, sit amet
-          iaculis metus mattis ut. Pellentesque vel ullamcorper justo, ut laoreet nisi. Vestibulum ultricies mauris et
-          mi semper molestie.</p>
-        <button class="read-more" onclick="openArticle('article3.html')">Read More</button>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 class="title">Oh Christmas Tree Worm, Oh Christmas Tree Worm…</h2>
+        <p class="copy">How lovely are your radioles?</p>
+        <button class="btn">View Article</button>
+      </div>
+    </div>
+    <div class="card">
+      <div class="content">
+        <h2 class="title">The Pros of Being Far From The Madding Crowd</h2>
+        <p class="copy">Desert island life in the Covid era...</p>
+        <button class="btn" href="article4.html">View Article</button>
       </div>
     </div>
   </main>
 
   <footer>
     <div class="footer-content">
-      <p>&copy; Kimatron 2023. All rights reserved.</p>
-      <div class="social-media-links">
-        <a href="#" class="social-media-link" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-facebook"></i>
-        </a>
-        <a href="#" class="social-media-link" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="#" class="social-media-link" target="_blank" rel="noopener noreferrer">
-          <i class="fab fa-instagram"></i>
-        </a>
-      </div>
+      <a href="https://www.linkedin.com/in/kimhanlon291354/" class="footer-link" target="_blank"
+        rel="noopener noreferrer">
+        <img src="assets/images/lilogo.png" alt="LinkedIn" class="footer-image">
+      </a>
+      <p class="footer-text">&copy; 2023 Kimatron. All rights reserved.</p>
+      <a href="https://github.com/kimatron" class="footer-link" target="_blank" rel="noopener noreferrer">
+        <img src="assets/images/githuborange.png" alt="GitHub" class="footer-image">
+      </a>
     </div>
   </footer>
+
+</body>
 
 </html>
