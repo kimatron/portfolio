@@ -112,7 +112,7 @@ main {
 }
 
 footer {
-  background-color: #333;
+  background-color: #000;
   color: #fff;
   padding: 20px 0;
   text-align: center;
@@ -199,17 +199,50 @@ footer {
   transition: color 1s;
 }
 
-
-.button-container {
-  display: flex;
-  justify-content: center;
-  margin-top: 20px;
+a {
+  text-decoration: none;
 }
 
-.button-container .codepen-button {
-  margin: 0 10px;
-  width: 150px;
-  /* Adjust the width to make the buttons smaller */
+
+.codepen-button {
+  display: block;
+  cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 3px;
+  isolation: isolate;
+}
+
+.codepen-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 100%;
+  background: linear-gradient(115deg, #4fcf70, #fad648, #a767e5, #12bcfe, #44ce7b);
+  background-size: 25% 100%;
+  animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop .75s linear infinite;
+  animation-play-state: paused;
+  translate: -5% 0%;
+  transition: translate 0.25s ease-out;
+}
+
+.codepen-button:hover::before {
+  animation-play-state: running;
+  transition-duration: 0.75s;
+  translate: 0% 0%;
+}
+
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+  to {
+    transform: translateX(-25%);
+  }
 }
 
 .codepen-button span {
@@ -222,91 +255,103 @@ footer {
   height: 100%;
 }
 
-button {
-  position: relative;
-  text-decoration: none;
-  font-size: 15px;
-  text-transform: uppercase;
-  letter-spacing: 5px;
-  line-height: 48px;
-  width: 160px;
-  font-weight: bold;
-  height: 55px;
-  -webkit-box-reflect: bottom 1px linear-gradient(transparent, #0004);
-}
 
-button span {
-  position: absolute;
+
+/* Style for form on contact page */
+.form-container {
+  width: 400px;
+  background: linear-gradient(#212121, #212121) padding-box,
+    linear-gradient(145deg, transparent 35%, #f7ba2b, #ea5358) border-box;
+  border: 2px solid transparent;
+  padding: 32px 24px;
+  font-size: 14px;
+  font-family: inherit;
+  color: white;
   display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  border-radius: 16px;
+}
+
+
+
+.form-container .form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-container .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.form-container .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #717171;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.form-container .form-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  color: #fff;
+  font-family: inherit;
+  background-color: transparent;
+  border: 1px solid #414141;
+}
+
+.form-container .form-group textarea {
+  width: 100%;
+  padding: 12px 16px;
+  border-radius: 8px;
+  resize: none;
+  color: #fff;
+  height: 96px;
+  border: 1px solid #414141;
+  background-color: transparent;
+  font-family: inherit;
+}
+
+.form-container .form-group input::placeholder {
+  opacity: 0.5;
+}
+
+.form-container .form-group input:focus {
+  outline: none;
+  border-color: #f7ba2b;
+}
+
+.form-container .form-group textarea:focus {
+  outline: none;
+  border-color: #f7ba2b;
+}
+
+.form-container .form-submit-btn {
+  display: flex;
+  align-items: flex-start;
   justify-content: center;
-  top: 4px;
-  right: 4px;
-  bottom: 4px;
-  left: 4px;
-  text-align: center;
-  background: #2E2E2E;
-  color: rgba(255, 255, 255, 0.781);
-  transition: 0.5s;
-  z-index: 1;
+  align-self: flex-start;
+  font-family: inherit;
+  color: #717171;
+  font-weight: 600;
+  width: 40%;
+  background: #313131;
+  border: 1px solid #414141;
+  padding: 12px 16px;
+  font-size: inherit;
+  gap: 8px;
+  margin-top: 8px;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
-button:hover span {
-  color: rgba(255, 255, 255, 1);
-}
-
-button::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: 400%;
-  opacity: 0;
-  transition: 0.5s;
-  background: linear-gradient(45deg, #91155d, #525296, #0f0, #ff0, #fb0094, #00f, #0f0, #ff0);
-  animation: animate123 20% linear infinte;
-}
-
-button::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  background-size: 400%;
-  filter: blur(20px);
-  transition: 0.5s;
-  background: linear-gradient(45deg, #91155d, #525296, #0f0, #ff0, #fb0094, #00f, #0f0, #ff0);
-  animation: animate123 20% linear infinte;
-}
-
-button:hover::before,
-button:hover::after {
-  opacity: 1;
-}
-
-@keyframes animate123 {
-  0% {
-    background-position: 0 0;
-  }
-
-  50% {
-    background-position: 300% 0;
-  }
-
-  100% {
-    background-position: 0 0;
-  }
-}
-
-button span::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 50%;
-  background: rgba(255, 255, 255, 0.1);
+.form-container .form-submit-btn:hover {
+  background-color: #f7ba2b;
+  border-color: #ea5358;
 }

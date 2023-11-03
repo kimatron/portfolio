@@ -20,7 +20,7 @@
 
 <nav>
   <ul>
-    <li><a href="home.html">Home</a></li>
+    <li><a href="index.html">Home</a></li>
     <li><a href="about.html">About</a></li>
     <li><a href="projects.html">Projects</a></li>
     <li><a href="articles.html">Articles</a></li>
@@ -29,35 +29,19 @@
 </nav>
 
 <main>
-  <a href="kim-hanlon-page.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Kim Hanlon</p>
+  <div class="form-container">
+    <form class="form">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="text" id="email" name="email" required="">
       </div>
-    </div>
-  </a>
-  <a href="projects.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Projects</p>
+      <div class="form-group">
+        <label for="textarea">How Can I Help You?</label>
+        <textarea name="textarea" id="textarea" rows="10" cols="50" required="">          </textarea>
       </div>
-    </div>
-  </a>
-  <a href="articles.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Articles</p>
-      </div>
-    </div>
-  </a>
-  <a href="articles.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Resume</p>
-      </div>
-    </div>
-  </a>
-
+      <button class="form-submit-btn .codepen-button" type="submit">Submit</button>
+    </form>
+  </div>
 
 
 </main>
