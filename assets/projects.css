@@ -112,7 +112,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
-  background-color: #000;
+  background-color: #121212;
 }
 
 .container {
@@ -138,7 +138,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   position: relative;
-  background: #EB5160;
+  background: #f7ba2b;
   color: #fff;
   cursor: pointer;
   margin-bottom: 60px;
@@ -173,15 +173,15 @@ main {
 }
 
 .card-color-1 {
-  background-color: #8F3985;
+  background-color: #f7ba2b;
 }
 
 .card-color-2 {
-  background-color: #8DAA91;
+  background-color: #EB5160;
 }
 
 .card-color-3 {
-  background-color: #888DA7;
+  background-color: #f7ba2b;
 }
 
 /* The cover (expanding background) */
@@ -328,7 +328,7 @@ main {
 }
 
 footer {
-  background-color: #000;
+  background-color: #121212;
   color: #fff;
   padding: 20px 0;
   text-align: center;
