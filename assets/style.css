@@ -12,7 +12,7 @@ body {
 }
 
 header {
-  background-color: #333;
+  background-color: #121212;
   color: #fff;
   padding: 20px;
   text-align: center;
@@ -45,7 +45,7 @@ header h1:hover {
 
 
 nav {
-  background-color: #333;
+  background-color: #121212;
   color: #fff;
   padding: 10px;
   display: flex;
