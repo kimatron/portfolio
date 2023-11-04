@@ -94,6 +94,7 @@ main {
   flex-wrap: wrap;
   justify-content: center;
   align-content: center;
+
 }
 
 @import url("https://fonts.googleapis.com/css?family=Cardo:400i|Rubik:400,700&display=swap");
@@ -300,6 +301,82 @@ body {
   .card:focus-within .content>*:not(.title) {
     transition-duration: 0s;
   }
+}
+
+/** Article page styling **/
+.article {
+  background-color: #fff;
+  color: #000;
+  padding: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+}
+
+.article-header {
+  margin-bottom: 20px;
+}
+
+.article-title {
+  margin: 0;
+  font-size: 24px;
+  color: #fff;
+}
+
+.article-meta {
+  margin: 0;
+  font-size: 14px;
+  color: #777;
+}
+
+.article-content {
+  margin: 10px 0;
+}
+
+.article-image {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+
+
+.article-content p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+.article-content p {
+  margin-bottom: 12px;
+}
+
+.article-content h2 {
+  margin-bottom: 16px;
+}
+
+.article-content h3 {
+  margin-bottom: 14px;
+}
+
+.highlight {
+  font-weight: bold;
+  color: #f7ba2b;
+}
+
+.paragraph-spacing {
+  margin-bottom: 20px;
+}
+
+.heading-spacing {
+  margin-bottom: 10px;
+}
+
+.emphasis {
+  font-style: italic;
+}
+
+.ps {
+  font-size: 14px;
+  color: #777;
 }
 
 footer {
