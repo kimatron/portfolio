@@ -379,6 +379,169 @@ body {
   color: #777;
 }
 
+/* Flyout Styles */
+aside[data-flyout] {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 9999;
+}
+
+aside[data-flyout] h2 {
+  margin-top: 0;
+}
+
+aside[data-flyout] div {
+  display: flex;
+  align-items: center;
+}
+
+aside[data-flyout] img {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+aside[data-flyout] h3 {
+  margin-bottom: 5px;
+}
+
+aside[data-flyout] p {
+  margin-top: 0;
+}
+
+aside[data-flyout] a {
+  display: block;
+  margin-top: 10px;
+}
+
+
+[data-flyout],
+[data-flyout] * {
+  box-sizing: border-box;
+}
+
+[data-flyout] {
+  width: 100%;
+  padding: 0 15px 15px 15px;
+  position: fixed;
+  bottom: 0;
+  right: -300px;
+  color: #555;
+  background: white;
+  font-size: 10pt;
+  text-align: left;
+  opacity: 0;
+  z-index: 500;
+  pointer-events: none;
+  box-shadow: rgba(0, 0, 0, .5) 0 0 1px,
+    rgba(0, 0, 0, .15) 0 5px 15px;
+  transition: right .2s ease-in-out,
+    opacity .2s ease-in-out;
+}
+
+[data-flyout] div:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+[data-flyout] img {
+  width: auto;
+  max-width: 50px;
+  margin: 0 15px 0 0;
+  float: left;
+}
+
+[data-flyout] h2 {
+  margin: -15px -15px 15px -15px;
+  padding: 15px;
+  color: white;
+  background: #f60;
+  line-height: 1;
+  font-size: 14pt;
+  font-weight: 600;
+  letter-spacing: -.02em;
+  text-shadow: #f40 1px 1px 0;
+}
+
+[data-flyout] h3 {
+  color: #111;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
+  font-size: 12pt;
+  letter-spacing: -.02em;
+}
+
+[data-flyout] p {
+  margin: 0;
+}
+
+[data-flyout] [data-button] {
+  width: auto;
+  display: block;
+  margin: 15px 0 0 0 !important;
+}
+
+/* hide Headline, Image, Article Headline, & Description by default  */
+[data-flyout] h2,
+[data-flyout] h3,
+[data-flyout] img,
+[data-flyout] p {
+  display: none;
+}
+
+/* reveal Image and Article Headline if browser is <300px */
+@media (min-width: 300px) {
+  [data-flyout] {
+    padding-top: 15px;
+  }
+
+  [data-flyout] img,
+  [data-flyout] h3 {
+    display: block;
+  }
+}
+
+/* reveal Description if browser is <400px */
+@media (min-width: 400px) {
+  [data-flyout] img {
+    max-width: 75px;
+  }
+
+  [data-flyout] p {
+    display: block;
+  }
+}
+
+/* set max-width on Flyout and reveal Headline if browser is <500px */
+@media (min-width: 500px) {
+  [data-flyout] {
+    max-width: 300px;
+  }
+
+  [data-flyout] h2 {
+    display: block;
+  }
+}
+
+/* display Flyout when page is scrolled <90% */
+@supports (scroll-snap-type: mandatory) {
+  @media (max-height: 90%) {
+    [data-flyout] {
+      right: 0;
+      pointer-events: all;
+      opacity: 1;
+    }
+  }
+}
+
+
 footer {
   background-color: #121212;
   color: #fff;

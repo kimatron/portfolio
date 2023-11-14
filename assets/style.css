@@ -9,6 +9,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  cursor: url('assets/img/fishcursor.png'), auto;
 }
 
 header {
@@ -50,6 +51,7 @@ nav {
   padding: 10px;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 nav ul {
@@ -86,20 +88,125 @@ nav ul li a:hover::before {
   transform: scaleX(1);
 }
 
+/* Regular navbar styles (visible by default) */
+.hamburger {
+  display: none;
+  /* Initially hide the hamburger icon */
+  cursor: pointer;
+}
 
-@keyframes animate123 {
-  0% {
-    background-position: 0 0;
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    /* Display the hamburger icon on small screens */
   }
 
-  50% {
-    background-position: 300% 0;
+  .nav-list {
+    display: none;
+    /* Hide the list items by default */
+    flex-direction: column;
+    /* Display items vertically */
+    background-color: #121212;
+    /* Update background to differentiate the menu */
+    padding: 10px;
   }
 
-  100% {
-    background-position: 0 0;
+  .nav-list.show-menu {
+    display: block;
+    /* Show the list items when the 'show-menu' class is applied */
   }
 }
+
+
+/*--------------------------------------------------------------
+# Hero Section
+--------------------------------------------------------------*/
+.hero {
+  height: 100vh;
+  position: relative;
+  color: #fff;
+}
+
+.hero .hero-content {
+  text-align: center;
+  position: absolute;
+}
+
+.hero .overlay-itro {
+  background-color: rgba(0, 0, 0, 0.6);
+  position: absolute;
+  top: 0;
+  left: 0px;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0.9;
+}
+
+.hero .hero-title {
+  color: #fff;
+  font-weight: 600;
+  font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero .hero-title {
+    font-size: 4.5rem;
+  }
+}
+
+.hero .hero-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+@media (min-width: 768px) {
+  .hero .hero-subtitle {
+    font-size: 2.5rem;
+  }
+}
+
+.hero .text-slider-items {
+  display: none;
+}
+
+.hero-single {
+  height: 350px;
+}
+
+.hero-single .hero-content {
+  margin-top: 30px;
+}
+
+.hero-single .hero-title {
+  text-transform: uppercase;
+  font-size: 3rem;
+}
+
+@media (min-width: 768px) {
+  .hero-single .hero-title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero-single .breadcrumb {
+  background-color: transparent;
+  color: #0078ff;
+}
+
+.hero-single .breadcrumb .breadcrumb-item:before {
+  color: #cde1f8;
+}
+
+.hero-single .breadcrumb .breadcrumb-item.active {
+  color: #cde1f8;
+}
+
+.hero-single .breadcrumb a {
+  color: #fff;
+}
+
 
 main {
   flex-grow: 1;
@@ -110,6 +217,8 @@ main {
   align-content: center;
   background-color: #121212;
 }
+
+
 
 footer {
   background-color: #121212;
@@ -142,8 +251,7 @@ footer {
 
 .card {
   --background: linear-gradient(to left, #f7ba2b 0%, #ea5358 100%);
-  width: 190px;
-  height: 254px;
+
   padding: 5px;
   border-radius: 1rem;
   overflow: visible;
@@ -153,6 +261,11 @@ footer {
   z-index: 1;
   margin: 10px;
   align-content: center;
+  width: 14vw;
+  /* Set the width to 25% of the viewport width */
+  height: 19vw;
+  /* Allowing the height to adjust according to content */
+  margin: 10px;
 }
 
 .card::after {
@@ -185,6 +298,7 @@ footer {
 }
 
 .card .title {
+  font-size: 1.5vw;
   font-weight: bold;
   letter-spacing: .1em;
 }
@@ -367,14 +481,19 @@ a {
     margin: 0 5px;
   }
 
-  .card {
+  nav {
     width: 100%;
-    height: auto;
-    margin: 5px;
   }
+
+  footer {
+    width: 100%;
+  }
+
+
 
   .form-container {
     width: 100%;
-    max-width: 400px;
+    max-width: 100%;
   }
+
 }

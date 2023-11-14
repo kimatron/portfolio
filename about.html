@@ -10,6 +10,12 @@
     content="portfolio, projects, scuba instructor, web design, articles, software developer, Kim Hanlon">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My Portfolio</title>
+  <script src="script.js"></script>
+  <!-- Vendor CSS Files -->
+  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
   <script src="script.js"></script>
 </head>
@@ -28,54 +34,42 @@
   </ul>
 </nav>
 
-<main>
-  <a href="kim-hanlon-page.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Kim Hanlon</p>
+<body>
+  <main>
+    <!-- ======= Hero Section ======= -->
+    <div id="hero" class="hero route bg-image" style="background-image: url(assets/img/hero-bg.jpg)">
+      <div class="overlay-itro"></div>
+      <div class="hero-content display-table">
+        <div class="table-cell">
+          <div class="container">
+            <!--<p class="display-6 color-d">Hello, world!</p>-->
+            <h1 class="hero-title mb-4">I am Kim Hanlon</h1>
+            <p class="hero-subtitle"><span class="typed" data-typed-items="Developer, Writer, Diver, Freelancer"></span>
+            </p>
+            <!-- <p class="pt-3"><a class="btn btn-primary btn js-scroll px-4" href="#about" role="button">Learn More</a></p> -->
+          </div>
+        </div>
       </div>
+    </div><!-- End Hero Section -->
+
+
+
+  </main>
+
+  <footer>
+    <div class="footer-content">
+      <a href="https://www.linkedin.com/in/kimhanlon291354/" class="footer-link" target="_blank"
+        rel="noopener noreferrer">
+        <img src="assets/images/lilogo.png" alt="LinkedIn" class="footer-image">
+      </a>
+
+      <p class="footer-text">&copy; 2023 Kimatron. All rights reserved.</p>
+
+      <a href="https://github.com/kimatron" class="footer-link" target="_blank" rel="noopener noreferrer">
+        <img src="assets/images/githuborange.png" alt="GitHub" class="footer-image">
+      </a>
     </div>
-  </a>
-  <a href="projects.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Projects</p>
-      </div>
-    </div>
-  </a>
-  <a href="articles.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Articles</p>
-      </div>
-    </div>
-  </a>
-  <a href="articles.html">
-    <div class="card">
-      <div class="card-info">
-        <p class="title">Resume</p>
-      </div>
-    </div>
-  </a>
-
-
-
-</main>
-
-<footer>
-  <div class="footer-content">
-    <a href="https://www.linkedin.com/in/kimhanlon291354/" class="footer-link" target="_blank"
-      rel="noopener noreferrer">
-      <img src="assets/images/lilogo.png" alt="LinkedIn" class="footer-image">
-    </a>
-
-    <p class="footer-text">&copy; 2023 Kimatron. All rights reserved.</p>
-
-    <a href="https://github.com/kimatron" class="footer-link" target="_blank" rel="noopener noreferrer">
-      <img src="assets/images/githuborange.png" alt="GitHub" class="footer-image">
-    </a>
-  </div>
-</footer>
+  </footer>
 
 </body>
 
