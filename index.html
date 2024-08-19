@@ -4,117 +4,241 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kim Hanlon Portfolio</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-  <!-- Font Awesome -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Portfolio website showcasing Kim Hanlon's projects and articles">
   <meta name="keywords"
     content="portfolio, projects, scuba instructor, web design, articles, software developer, Kim Hanlon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>My Portfolio</title>
-  <link rel="stylesheet" type="text/css" href="assets/style.css">
-  <script src="script.js"></script>
+  <title>Kim Hanlon - Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="assets/style.css">
 </head>
 
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">Kim Hanlon</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
-        <li class="nav-item"><a class="nav-link" href="#about">About Me</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
-        <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
-        <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Kim Hanlon</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Projects</a></li>
+          <li class="nav-item"><a class="nav-link" href="#blog">Blog</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
     </div>
   </nav>
 
-  <!-- Hero Section with Background Video -->
-  <section class="hero d-flex flex-column justify-content-center align-items-center">
-    <video autoplay muted loop id="bg-video">
-      <source src="your-video.mp4" type="video/mp4">
-    </video>
-    <div class="content">
-      <h1>I am Kim Hanlon</h1>
-      <h2 class="changing-text"></h2>
-      <a href="#about" class="btn btn-glow mt-4">Learn More</a>
+  <section id="home" class="hero">
+    <div class="container">
+      <h1>I am a <span id="rotating-text"></span></h1>
+      <a href="#about" class="btn btn-primary">Learn More</a>
     </div>
   </section>
 
-  <!-- Parallax Section -->
-  <section class="parallax reveal"></section>
-
-  <!-- About Section -->
-  <section id="about" class="container text-center py-5 reveal">
-    <h2>About Me</h2>
-    <p class="lead">A passionate developer, writer, and diver with a knack for creating stunning web experiences.</p>
+  <section id="about" class="section">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>From the depths of the ocean to the cloud, my journey has been anything but conventional. With a background in
+        marine conservation and over a decade of experience as a scuba instructor and technical diver, I've always been
+        driven by curiosity and a desire to make a positive impact.</p>
+      <p>Now, I'm channeling that same passion into the world of software development. As a full-stack developer with
+        expertise in Microsoft Azure cloud computing, I bring a unique perspective to every project. My experience in
+        high-pressure underwater environments has honed my problem-solving skills and attention to detail - qualities
+        that translate perfectly into writing clean, efficient code and designing robust cloud solutions.</p>
+      <p>I'm excited to merge my love for technology with my commitment to conservation, creating innovative solutions
+        that can make a difference in both the digital and natural worlds.</p>
+    </div>
   </section>
 
-  <!-- Projects Section -->
-  <section id="projects" class="projects-section py-5 reveal">
+  <section id="skills" class="section">
+    <div class="container">
+      <h2>Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-category">
+          <h3>Frontend</h3>
+          <ul>
+            <li>HTML5</li>
+            <li>CSS3 / Sass</li>
+            <li>JavaScript (ES6+)</li>
+            <li>React.js</li>
+            <li>Vue.js</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Backend</h3>
+          <ul>
+            <li>Node.js</li>
+            <li>Express.js</li>
+            <li>Python</li>
+            <li>Django</li>
+            <li>ASP.NET Core</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Databases</h3>
+          <ul>
+            <li>MongoDB</li>
+            <li>PostgreSQL</li>
+            <li>MySQL</li>
+            <li>Azure Cosmos DB</li>
+          </ul>
+        </div>
+        <div class="skill-category">
+          <h3>Cloud & DevOps</h3>
+          <ul>
+            <li>Microsoft Azure</li>
+            <li>Azure Functions</li>
+            <li>Azure DevOps</li>
+            <li>Docker</li>
+            <li>Kubernetes</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="section">
     <div class="container">
       <h2>Projects</h2>
-      <div class="row">
-        <!-- Project cards with interactive hover effects go here -->
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <h3>Project 1</h3>
-            <p>A brief description of the project.</p>
+      <div class="project-grid">
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('marine-data-tracker.jpg');">
+            <div class="project-overlay">
+              <h3>Marine Data Tracker</h3>
+              <p>A full-stack application for tracking marine biodiversity data, built with React, Node.js, and Azure
+                services.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <h3>Project 2</h3>
-            <p>A brief description of the project.</p>
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('dive-log-app.jpg');">
+            <div class="project-overlay">
+              <h3>Cloud-Based Dive Log</h3>
+              <p>A mobile-responsive web app for divers to log and analyze their dives, using Vue.js and Azure
+                Functions.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
           </div>
         </div>
-        <div class="col-md-4 mb-4">
-          <div class="project-card">
-            <h3>Project 3</h3>
-            <p>A brief description of the project.</p>
+        <div class="project-card">
+          <div class="project-image" style="background-image: url('conservation-platform.jpg');">
+            <div class="project-overlay">
+              <h3>Conservation Crowdfunding Platform</h3>
+              <p>A secure platform for funding marine conservation projects, built with ASP.NET Core and Azure Cosmos
+                DB.</p>
+              <a href="#" class="btn btn-primary">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section id="experience" class="section">
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Full-Stack Developer</h3>
+            <p class="date">2022 - Present</p>
+            <p>Developing cloud-native applications using Azure services. Specializing in creating scalable, efficient
+              solutions that bridge the gap between conservation efforts and technology.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Marine Conservation Technician</h3>
+            <p class="date">2018 - 2022</p>
+            <p>Led data collection and analysis for various marine conservation projects. Began integrating technology
+              solutions to streamline data management and reporting processes.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-content">
+            <h3>Technical Diving Instructor</h3>
+            <p class="date">2010 - 2018</p>
+            <p>Trained divers in advanced techniques for deep and technical diving. Developed and implemented safety
+              protocols and managed complex dive operations.</p>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Blog Section -->
-  <section id="blog" class="container text-center py-5 reveal">
-    <h2>Blog</h2>
-    <p class="lead">Read my latest articles on tech, development, and more.</p>
+  <section id="blog" class="section">
+    <div class="container">
+      <h2>Blog</h2>
+      <div class="blog-grid">
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('azure-for-conservation.jpg');"></div>
+          <div class="blog-content">
+            <h3>Leveraging Azure for Marine Conservation Efforts</h3>
+            <p>Exploring how cloud computing can revolutionize data collection and analysis in marine biology.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('from-diver-to-developer.jpg');"></div>
+          <div class="blog-content">
+            <h3>From Diver to Developer: A Career Transition Story</h3>
+            <p>My journey from the underwater world to the world of code, and the surprising similarities I've found.
+            </p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+        <div class="blog-card">
+          <div class="blog-image" style="background-image: url('serverless-dive-computers.jpg');"></div>
+          <div class="blog-content">
+            <h3>Building a Serverless Dive Computer Analyzer</h3>
+            <p>A deep dive into creating a serverless application for analyzing dive computer data using Azure
+              Functions.</p>
+            <a href="#" class="btn btn-primary">Read More</a>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
-  <!-- Interactive Particles Background -->
-  <div id="particles-js"></div>
+  <section id="contact" class="section">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" placeholder="Name" required>
+        </div>
+        <div class="mb-3">
+          <input type="email" class="form-control" placeholder="Email" required>
+        </div>
+        <div class="mb-3">
+          <textarea class="form-control" rows="5" placeholder="Message" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Send Message</button>
+      </form>
+    </div>
+  </section>
 
-  <!-- Footer -->
-  <footer class="text-center py-4">
-    <p class="mb-0">Follow me:</p>
-    <div class="social-icons mt-3">
-      <a href="https://www.facebook.com/blogdivein" class="icon facebook"><span class="tooltip">Facebook</span><i
-          class="fab fa-facebook-f"></i></a>
-      <a href="#" class="icon twitter"><span class="tooltip">Twitter</span><i class="fab fa-twitter"></i></a>
-      <a href="#" class="icon instagram"><span class="tooltip">Instagram</span><i class="fab fa-instagram"></i></a>
-      <a href="https://github.com/kimatron/dive-in" class="icon github"><span class="tooltip">Github</span><i
-          class="fab fa-github"></i></a>
-      <a href="#" class="icon youtube"><span class="tooltip">YouTube</span><i class="fab fa-youtube"></i></a>
+  <footer>
+    <div class="container">
+      <div class="social-icons">
+        <a href="https://www.facebook.com/blogdivein/" class="social-icon"><i class="fab fa-facebook"></i></a>
+        <a href="https://www.instagram.com/kimatronzyborg" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/kimhanlon291354" class="social-icon"><i class="fab fa-linkedin"></i></a>
+        <a href="https://github.com/kimatron" class="social-icon"><i class="fab fa-github"></i></a>
+      </div>
+      <p>&copy; 2024 Kim Hanlon. All rights reserved.</p>
     </div>
   </footer>
 
-  <!-- JavaScript and Animation Libraries -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-  <script src="script.js"></script> <!-- Link to external JS file -->
-
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
 </body>
 
 </html>
