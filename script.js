@@ -1,206 +1,138 @@
-/** Function for hamburger menu on smaller screens */
-function toggleMenu() {
-  var menu = document.querySelector('.nav-list');
-  menu.classList.toggle('show-menu');
-}
+document.addEventListener('DOMContentLoaded', function () {
+  const rotatingText = document.getElementById('rotating-text');
+  const words = ['developer', 'writer', 'freelancer', 'diver'];
+  let currentIndex = 0;
 
-// listing vars here so they're in the global scope
-var cards, nCards, cover, openContent, openContentText, pageIsOpen = false,
-  openContentImage, closeContent, windowWidth, windowHeight, currentCard;
-
-// initiate the process
-init();
-
-function init() {
-  resize();
-  selectElements();
-  attachListeners();
-}
-
-// select all the elements in the DOM that are going to be used
-function selectElements() {
-  cards = document.getElementsByClassName('card'),
-    nCards = cards.length,
-    cover = document.getElementById('cover'),
-    openContent = document.getElementById('open-content'),
-    openContentText = document.getElementById('open-content-text'),
-    openContentImage = document.getElementById('open-content-image')
-  closeContent = document.getElementById('close-content');
-}
-
-/* Attaching three event listeners here:
-  - a click event listener for each card
-  - a click event listener to the close button
-  - a resize event listener on the window
-*/
-function attachListeners() {
-  for (var i = 0; i < nCards; i++) {
-    attachListenerToCard(i);
+  function rotateText() {
+    rotatingText.classList.add('change');
+    setTimeout(() => {
+      rotatingText.textContent = words[currentIndex];
+      rotatingText.classList.remove('change');
+      currentIndex = (currentIndex + 1) % words.length;
+    }, 500);
   }
-  closeContent.addEventListener('click', onCloseClick);
-  window.addEventListener('resize', resize);
-}
 
-function attachListenerToCard(i) {
-  cards[i].addEventListener('click', function (e) {
-    var card = getCardElement(e.target);
-    onCardClick(card, i);
-  })
-}
+  setInterval(rotateText, 3000);
 
-/* When a card is clicked */
-function onCardClick(card, i) {
-  // set the current card
-  currentCard = card;
-  // add the 'clicked' class to the card, so it animates out
-  currentCard.className += ' clicked';
-  // animate the card 'cover' after a 500ms delay
-  setTimeout(function () {
-    animateCoverUp(currentCard)
-  }, 500);
-  // animate out the other cards
-  animateOtherCards(currentCard, true);
-  // add the open class to the page content
-  openContent.className += ' open';
-}
+  // Smooth scrolling for navigation links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
 
-/*
- * This effect is created by taking a separate 'cover' div, placing
- * it in the same position as the clicked card, and animating it to
- * become the background of the opened 'page'.
- * It looks like the card itself is animating in to the background,
- * but doing it this way is more performant (because the cover div is
- * absolutely positioned and has no children), and there's just less
- * having to deal with z-index and other elements in the card
- */
-function animateCoverUp(card) {
-  // get the position of the clicked card
-  var cardPosition = card.getBoundingClientRect();
-  // get the style of the clicked card
-  var cardStyle = getComputedStyle(card);
-  setCoverPosition(cardPosition);
-  setCoverColor(cardStyle);
-  scaleCoverToFillWindow(cardPosition);
-  // update the content of the opened page
-  openContentText.innerHTML = '<h1>' + card.children[2].textContent + '</h1>' + paragraphText;
-  openContentImage.src = card.children[1].src;
-  setTimeout(function () {
-    // update the scroll position to 0 (so it is at the top of the 'opened' page)
-    window.scroll(0, 0);
-    // set page to open
-    pageIsOpen = true;
-  }, 300);
-}
-
-function animateCoverBack(card) {
-  var cardPosition = card.getBoundingClientRect();
-  // the original card may be in a different position, because of scrolling, so the cover position needs to be reset before scaling back down
-  setCoverPosition(cardPosition);
-  scaleCoverToFillWindow(cardPosition);
-  // animate scale back to the card size and position
-  cover.style.transform = 'scaleX(' + 1 + ') scaleY(' + 1 + ') translate3d(' + (0) + 'px, ' + (0) + 'px, 0px)';
-  setTimeout(function () {
-    // set content back to empty
-    openContentText.innerHTML = '';
-    openContentImage.src = '';
-    // style the cover to 0x0 so it is hidden
-    cover.style.width = '0px';
-    cover.style.height = '0px';
-    pageIsOpen = false;
-    // remove the clicked class so the card animates back in
-    currentCard.className = currentCard.className.replace(' clicked', '');
-  }, 301);
-}
-
-function setCoverPosition(cardPosition) {
-  // style the cover so it is in exactly the same position as the card
-  cover.style.left = cardPosition.left + 'px';
-  cover.style.top = cardPosition.top + 'px';
-  cover.style.width = cardPosition.width + 'px';
-  cover.style.height = cardPosition.height + 'px';
-}
-
-function setCoverColor(cardStyle) {
-  // style the cover to be the same color as the card
-  cover.style.backgroundColor = cardStyle.backgroundColor;
-}
-
-function scaleCoverToFillWindow(cardPosition) {
-  // calculate the scale and position for the card to fill the page,
-  var scaleX = windowWidth / cardPosition.width;
-  var scaleY = windowHeight / cardPosition.height;
-  var offsetX = (windowWidth / 2 - cardPosition.width / 2 - cardPosition.left) / scaleX;
-  var offsetY = (windowHeight / 2 - cardPosition.height / 2 - cardPosition.top) / scaleY;
-  // set the transform on the cover - it will animate because of the transition set on it in the CSS
-  cover.style.transform = 'scaleX(' + scaleX + ') scaleY(' + scaleY + ') translate3d(' + (offsetX) + 'px, ' + (offsetY) + 'px, 0px)';
-}
-
-/* When the close is clicked */
-function onCloseClick() {
-  // remove the open class so the page content animates out
-  openContent.className = openContent.className.replace(' open', '');
-  // animate the cover back to the original position card and size
-  animateCoverBack(currentCard);
-  // animate in other cards
-  animateOtherCards(currentCard, false);
-}
-
-function animateOtherCards(card, out) {
-  var delay = 100;
-  for (var i = 0; i < nCards; i++) {
-    // animate cards on a stagger, 1 each 100ms
-    if (cards[i] === card) continue;
-    if (out) animateOutCard(cards[i], delay);
-    else animateInCard(cards[i], delay);
-    delay += 100;
-  }
-}
-
-// animations on individual cards (by adding/removing card names)
-function animateOutCard(card, delay) {
-  setTimeout(function () {
-    card.className += ' out';
-  }, delay);
-}
-
-function animateInCard(card, delay) {
-  setTimeout(function () {
-    card.className = card.className.replace(' out', '');
-  }, delay);
-}
-
-// this function searches up the DOM tree until it reaches the card element that has been clicked
-function getCardElement(el) {
-  if (el.className.indexOf('card ') > -1) return el;
-  else return getCardElement(el.parentElement);
-}
-
-// resize function - records the window width and height
-function resize() {
-  if (pageIsOpen) {
-    // update position of cover
-    var cardPosition = currentCard.getBoundingClientRect();
-    setCoverPosition(cardPosition);
-    scaleCoverToFillWindow(cardPosition);
-  }
-  windowWidth = window.innerWidth;
-  windowHeight = window.innerHeight;
-}
-
-var paragraphText = '<p>Somebody once told me the world is gonna roll me. I ain\'t the sharpest tool in the shed. She was looking kind of dumb with her finger and her thumb in the shape of an "L" on her forehead. Well the years start coming and they don\'t stop coming. Fed to the rules and I hit the ground running. Didn\'t make sense not to live for fun. Your brain gets smart but your head gets dumb. So much to do, so much to see. So what\'s wrong with taking the back streets? You\'ll never know if you don\'t go. You\'ll never shine if you don\'t glow.</p><p>Hey now, you\'re an all-star, get your game on, go play. Hey now, you\'re a rock star, get the show on, get paid. And all that glitters is gold. Only shooting stars break the mold.</p><p>It\'s a cool place and they say it gets colder. You\'re bundled up now, wait till you get older. But the meteor men beg to differ. Judging by the hole in the satellite picture. The ice we skate is getting pretty thin. The water\'s getting warm so you might as well swim. My world\'s on fire, how about yours? That\'s the way I like it and I never get bored.</p>';
-
-/**
- * Intro type effect
- */
-const typed = select('.typed')
-if (typed) {
-  let typed_strings = typed.getAttribute('data-typed-items')
-  typed_strings = typed_strings.split(',')
-  new Typed('.typed', {
-    strings: typed_strings,
-    loop: true,
-    typeSpeed: 100,
-    backSpeed: 50,
-    backDelay: 2000
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
   });
-}
+
+  // Navbar background change on scroll
+  const navbar = document.querySelector('.navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.style.backgroundColor = 'var(--navbar-bg)';
+      navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+      navbar.style.backgroundColor = 'transparent';
+      navbar.style.boxShadow = 'none';
+    }
+  });
+
+  // Add animation to section titles
+  const sectionTitles = document.querySelectorAll('h2');
+  const observerOptions = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+
+  sectionTitles.forEach(title => {
+    title.style.opacity = '0';
+    title.style.transform = 'translateY(20px)';
+    title.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(title);
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Existing code for rotating text and smooth scrolling
+
+  // Parallax effect for project cards
+  const projectCards = document.querySelectorAll('.project-card');
+
+  window.addEventListener('scroll', () => {
+    projectCards.forEach(card => {
+      const cardTop = card.getBoundingClientRect().top;
+      const cardBottom = card.getBoundingClientRect().bottom;
+      const windowHeight = window.innerHeight;
+
+      if (cardTop < windowHeight && cardBottom > 0) {
+        const scrollPercent = (windowHeight - cardTop) / windowHeight;
+        card.style.transform = `translateY(${scrollPercent * 20}px)`;
+      }
+    });
+  });
+
+  // Tilt effect for blog cards
+  const blogCards = document.querySelectorAll('.blog-card');
+
+  blogCards.forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+      const cardRect = card.getBoundingClientRect();
+      const cardCenterX = cardRect.left + cardRect.width / 2;
+      const cardCenterY = cardRect.top + cardRect.height / 2;
+      const mouseX = e.clientX - cardCenterX;
+      const mouseY = e.clientY - cardCenterY;
+
+      const rotateX = (mouseY / cardRect.height) * 10;
+      const rotateY = -(mouseX / cardRect.width) * 10;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    });
+  });
+
+  // Animated counter for a statistics section (you can add this section to your HTML)
+  function animateValue(obj, start, end, duration) {
+    let startTimestamp = null;
+    const step = (timestamp) => {
+      if (!startTimestamp) startTimestamp = timestamp;
+      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+      obj.innerHTML = Math.floor(progress * (end - start) + start);
+      if (progress < 1) {
+        window.requestAnimationFrame(step);
+      }
+    };
+    window.requestAnimationFrame(step);
+  }
+
+  const statsSection = document.querySelector('#stats');
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) {
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+          const target = parseInt(counter.getAttribute('data-target'));
+          animateValue(counter, 0, target, 2000);
+        });
+        observer.unobserve(statsSection);
+      }
+    }, {
+      threshold: 0.5
+    });
+
+    observer.observe(statsSection);
+  }
+});
