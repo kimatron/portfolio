@@ -1,138 +1,113 @@
-document.addEventListener('DOMContentLoaded', function () {
-  const rotatingText = document.getElementById('rotating-text');
-  const words = ['developer', 'writer', 'freelancer', 'diver'];
-  let currentIndex = 0;
+document.addEventListener('DOMContentLoaded', () => {
+  // Mobile menu toggle
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navList = document.querySelector('nav ul');
 
-  function rotateText() {
-    rotatingText.classList.add('change');
-    setTimeout(() => {
-      rotatingText.textContent = words[currentIndex];
-      rotatingText.classList.remove('change');
-      currentIndex = (currentIndex + 1) % words.length;
-    }, 500);
-  }
+  menuToggle.addEventListener('click', () => {
+      menuToggle.classList.toggle('active');
+      navList.classList.toggle('show');
+  });
 
-  setInterval(rotateText, 3000);
-
-  // Smooth scrolling for navigation links
+  // Smooth scrolling for navigation
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      e.preventDefault();
-
-      document.querySelector(this.getAttribute('href')).scrollIntoView({
-        behavior: 'smooth'
+      anchor.addEventListener('click', function (e) {
+          e.preventDefault();
+          document.querySelector(this.getAttribute('href')).scrollIntoView({
+              behavior: 'smooth'
+          });
       });
-    });
   });
 
   // Navbar background change on scroll
-  const navbar = document.querySelector('.navbar');
+  const navbar = document.querySelector('header');
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-      navbar.style.backgroundColor = 'var(--navbar-bg)';
-      navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
-    } else {
-      navbar.style.backgroundColor = 'transparent';
-      navbar.style.boxShadow = 'none';
-    }
-  });
-
-  // Add animation to section titles
-  const sectionTitles = document.querySelectorAll('h2');
-  const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
-  };
-
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-        observer.unobserve(entry.target);
+      if (window.scrollY > 50) {
+          navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.9)';
+      } else {
+          navbar.style.backgroundColor = 'rgba(10, 10, 10, 0.8)';
       }
-    });
-  }, observerOptions);
-
-  sectionTitles.forEach(title => {
-    title.style.opacity = '0';
-    title.style.transform = 'translateY(20px)';
-    title.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(title);
   });
+
+  // Parallax effect for sections
+  window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section');
+      sections.forEach(section => {
+          const speed = 0.3;
+          const rect = section.getBoundingClientRect();
+          const scrollPercent = (rect.top / window.innerHeight) * 100;
+          section.style.backgroundPositionY = `${scrollPercent * speed}px`;
+      });
+  });
+
+  // Typing effect for subtitle
+  const subtitle = document.querySelector('.subtitle');
+  const text = subtitle.textContent;
+  subtitle.textContent = '';
+  let i = 0;
+
+  function typeWriter() {
+      if (i < text.length) {
+          subtitle.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100);
+      }
+  }
+
+  typeWriter();
+
+  // Project card tilt effect
+  VanillaTilt.init(document.querySelectorAll(".project-card"), {
+      max: 25,
+      speed: 400,
+      glare: true,
+      "max-glare": 0.5,
+  });
+
+  // Skill item hover effect
+  const skillItems = document.querySelectorAll('.skill-item');
+  skillItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+          item.style.backgroundColor = getComputedStyle(document.documentElement).getPropertyValue('--accent-color');
+          item.style.color = getComputedStyle(document.documentElement).getPropertyValue('--bg-color');
+      });
+
+      item.addEventListener('mouseleave', () => {
+          item.style.backgroundColor = 'rgba(255, 255, 255, 0.05)';
+          item.style.color = getComputedStyle(document.documentElement).getPropertyValue('--text-color');
+      });
+  });
+
+  // Form submission (you'll need to set up server-side handling)
+  const form = document.querySelector('form');
+  if (form) {
+      form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          // Add your form submission logic here
+          alert('Form submitted! (Note: This is a placeholder action)');
+      });
+  }
 });
 
-document.addEventListener('DOMContentLoaded', function () {
-  // Existing code for rotating text and smooth scrolling
+// Add this to your existing JavaScript file
 
-  // Parallax effect for project cards
-  const projectCards = document.querySelectorAll('.project-card');
+document.addEventListener('DOMContentLoaded', () => {
+  // ... (keep your existing code)
 
-  window.addEventListener('scroll', () => {
-    projectCards.forEach(card => {
-      const cardTop = card.getBoundingClientRect().top;
-      const cardBottom = card.getBoundingClientRect().bottom;
-      const windowHeight = window.innerHeight;
-
-      if (cardTop < windowHeight && cardBottom > 0) {
-        const scrollPercent = (windowHeight - cardTop) / windowHeight;
-        card.style.transform = `translateY(${scrollPercent * 20}px)`;
-      }
-    });
-  });
-
-  // Tilt effect for blog cards
+  // Blog card animation on scroll
   const blogCards = document.querySelectorAll('.blog-card');
+  const blogObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+          if (entry.isIntersecting) {
+              entry.target.style.opacity = 1;
+              entry.target.style.transform = 'translateY(0)';
+          }
+      });
+  }, { threshold: 0.1 });
 
   blogCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const cardRect = card.getBoundingClientRect();
-      const cardCenterX = cardRect.left + cardRect.width / 2;
-      const cardCenterY = cardRect.top + cardRect.height / 2;
-      const mouseX = e.clientX - cardCenterX;
-      const mouseY = e.clientY - cardCenterY;
-
-      const rotateX = (mouseY / cardRect.height) * 10;
-      const rotateY = -(mouseX / cardRect.width) * 10;
-
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-    });
+      card.style.opacity = 0;
+      card.style.transform = 'translateY(20px)';
+      card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+      blogObserver.observe(card);
   });
-
-  // Animated counter for a statistics section (you can add this section to your HTML)
-  function animateValue(obj, start, end, duration) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-      if (!startTimestamp) startTimestamp = timestamp;
-      const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-      obj.innerHTML = Math.floor(progress * (end - start) + start);
-      if (progress < 1) {
-        window.requestAnimationFrame(step);
-      }
-    };
-    window.requestAnimationFrame(step);
-  }
-
-  const statsSection = document.querySelector('#stats');
-  if (statsSection) {
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        const counters = document.querySelectorAll('.counter');
-        counters.forEach(counter => {
-          const target = parseInt(counter.getAttribute('data-target'));
-          animateValue(counter, 0, target, 2000);
-        });
-        observer.unobserve(statsSection);
-      }
-    }, {
-      threshold: 0.5
-    });
-
-    observer.observe(statsSection);
-  }
 });
